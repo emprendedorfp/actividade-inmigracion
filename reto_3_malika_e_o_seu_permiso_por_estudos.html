@@ -92,11 +92,128 @@ function comprobarPassword3() {
 </div>
 </div>
 </article>
+<article class="iDevice_wrapper textIdevice" id="id57">
+<div class="iDevice emphasis0" >
+<div id="ta57_132_2" class="block iDevice_content">
+<div class="exe-text"><div style="display: flex; justify-content: center; align-items: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 25px 0;">
+<div style="background-color: #ffffff; border: 3px solid #004A7F; border-radius: 10px; padding: 20px 35px; box-shadow: 0 4px 12px rgba(0, 74, 127, 0.15); text-align: center; width: 290px;">
+<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tiempo Global del Desafío</div>
+<div id="crono_global" style="color: #004a7f; font-size: 3.2rem; font-weight: bold; background-color: #f4f7f9; padding: 12px; border-radius: 6px; border: 1px solid #d0dae2; font-family: monospace; letter-spacing: 1px;">02:00:00</div>
+<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comenzar Desafío</button></div>
+</div>
+<p>
+<script>
+(function() {
+  const TIEMPO_INICIAL_SEGUNDOS = 120 * 60; // 120 minutos
+  let intervalo = null;
+
+  const display = document.getElementById('crono_global');
+  const boton = document.getElementById('btn_global');
+
+  // Control de alertas individuales por sesión/página
+  let alerta90 = false;
+  let alerta60 = false;
+  let alerta30 = false;
+
+  function formatearTiempo(segundos) {
+    const hrs = Math.floor(segundos / 3600);
+    const mins = Math.floor((segundos % 3600) / 60);
+    const segs = segundos % 60;
+    return (hrs < 10 ? '0' : '') + hrs + ':' + (mins < 10 ? '0' : '') + mins + ':' + (segs < 10 ? '0' : '') + segs;
+  }
+
+  function comprobarYActualizar() {
+    const finTiempo = localStorage.getItem('desafio_fin_tiempo');
+    
+    if (!finTiempo) {
+      // No ha empezado el juego
+      display.textContent = formatearTiempo(TIEMPO_INICIAL_SEGUNDOS);
+      boton.textContent = "Comenzar Desafío";
+      boton.disabled = false;
+      boton.style.backgroundColor = "#0098DA";
+      return;
+    }
+
+    const ahora = Math.floor(Date.now() / 1000);
+    const tiempoRestante = finTiempo - ahora;
+
+    if (tiempoRestante <= 0) {
+      // El tiempo se ha terminado
+      clearInterval(intervalo);
+      localStorage.removeItem('desafio_fin_tiempo');
+      display.textContent = "00:00:00";
+      display.style.color = "#cc3333";
+      display.style.backgroundColor = "#fff3f3";
+      display.style.borderColor = "#cc3333";
+      
+      boton.textContent = "Reiniciar Desafío";
+      boton.disabled = false;
+      boton.style.backgroundColor = "#0098DA";
+      
+      alert("¡El tiempo global ha terminado! El desafío ha expirado.");
+    } else {
+      // El tiempo sigue corriendo
+      display.textContent = formatearTiempo(tiempoRestante);
+      boton.textContent = "Desafío en marcha...";
+      boton.disabled = true;
+      boton.style.backgroundColor = "#a0b2c6";
+
+      // Comprobación de alertas según los minutos que quedan
+      const minsRestantes = tiempoRestante / 60;
+      if (minsRestantes <= 90 && !alerta90) { alerta90 = true; alert("¡Atención! Quedan 90 minutos globales."); }
+      if (minsRestantes <= 60 && !alerta60) { alerta60 = true; alert("¡Atención! Quedan 60 minutos (1 hora)."); }
+      if (minsRestantes <= 30 && !alerta30) { alerta30 = true; alert("¡Atención! Últimos 30 minutos del desafío."); }
+    }
+  }
+
+  // Iniciar el contador de la página actual si ya hay un tiempo guardado en el navegador
+  if (localStorage.getItem('desafio_fin_tiempo')) {
+    display.style.color = "#004A7F";
+    comprobarYActualizar();
+    intervalo = setInterval(comprobarYActualizar, 1000);
+  }
+
+  // Evento al pulsar el botón (solo activo si no está corriendo)
+  boton.addEventListener('click', function() {
+    const ahora = Math.floor(Date.now() / 1000);
+    const tiempoDestino = ahora + TIEMPO_INICIAL_SEGUNDOS;
+    
+    // Guardamos el momento exacto del fin en la memoria del navegador
+    localStorage.setItem('desafio_fin_tiempo', tiempoDestino);
+    
+    display.style.color = "#004A7F";
+    display.style.backgroundColor = "#f4f7f9";
+    display.style.borderColor = "#d0dae2";
+
+    comprobarYActualizar();
+    clearInterval(intervalo);
+    intervalo = setInterval(comprobarYActualizar, 1000);
+  });
+
+  // Efectos visuales del botón
+  boton.addEventListener('mouseover', () => { if(!localStorage.getItem('desafio_fin_tiempo')) boton.style.backgroundColor = '#007BB2'; });
+  boton.addEventListener('mouseout', () => { if(!localStorage.getItem('desafio_fin_tiempo')) boton.style.backgroundColor = '#0098DA'; });
+})();
+</script>
+</p></div>
+</div>
+</div>
+</article>
 <article class="iDevice_wrapper textIdevice" id="id29">
 <div class="iDevice emphasis0" >
 <div id="ta29_127_2" class="block iDevice_content">
-<div class="exe-text"><p>Neste reto tes diferentes tarefas, solucionándoas conseguirás unha chave de desbloqueo para pasar ao DESAFÍO FINAL.</p>
-<p><img src="img-5-malika.png" alt="" width="100%" height="768" /></p></div>
+<div class="exe-text"><p><img src="img-5-malika.png" alt="" width="100%" height="768" /></p>
+<figure class="exe-figure exe-image license-pd" style="float: right; width: 20%; margin: 0 0 15px 15px;"><img src="img_9_nie_malika.png" alt="Foto carne Malika" width="100%" height="auto" />
+<figcaption class="figcaption" style="font-size: 0.85em; color: #666; text-align: center;"><span class="author">Xerada IA</span>. <span class="title"><em>Foto carne Malika</em></span></figcaption>
+</figure>
+<p style="text-align: justify;">Malika ten 19 anos e vive en Mequinez, no norte de Marrocos. Terminou o curso sétimo de secundaria obtendo o certificado de fin de estudos secundarios, con excelentes notas, o seu sono é estudar Arquitectura pero na súa casa hai dificultades económicas. A súa irmá traballa en Lugo é coméntalle que podería vir con ela e estudar un Ciclo Superior de Proxectos de Edificación como un primeiro paso. A súa irmá díxolle que, ao ser un Grao Superior, o primeiro paso non é o visado, senón demostrar que o seu título marroquí equivale ao Bacharelato español; ela considera que o problema é que non ten ningún permiso para desprazarse a España.</p>
+<p style="text-align: justify;">A súa irmá contacta co asociación Un Mundo Feliz, plantexándonos diversas dúbidas que terás que contestar, revisando os Recursos de Consulta e solucionando as actividades do reto que te proporcionen o código do reto.</p>
+<p style="text-align: justify;">Unha vez que resolvas todas as tarefas, na última de encher ocos, terás que escribir tamén en números, dita secuencia de números será o código para acceder ao Desafío Final</p>
+<ul></ul>
+<div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 13pt; background-color: #e3f2fd; border-left: 6px solid #2196f3; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA DE MALIKA:</p>
+<p style="margin-bottom: 15px;">Para axudar a Santiago, consulta aquí a guía oficial sobre o Arraigo para a Formación:</p>
+<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#ci-10" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Clica aquí para abrir a ligazón </a></div></div>
 </div>
 </div>
 </article>
@@ -784,4 +901,4 @@ MDA1JXUwMDA1JXUwMDEy
 </nav>
 </div>
 </div>
-<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Feito con eXeLearning<span> (Nova xanela)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
