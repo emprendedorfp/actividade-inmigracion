@@ -13,6 +13,8 @@
 <script type="text/javascript" src="exe_jquery.js"></script>
 <script type="text/javascript" src="common_i18n.js"></script>
 <script type="text/javascript" src="common.js"></script>
+<link rel="stylesheet" type="text/css" href="candado-activity.css" />
+<script type="text/javascript" src="candado-activity.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
 /* 1. AJUSTE DEL LOGO (FONDO) */
@@ -33,7 +35,22 @@
     text-align: left !important;
     line-height: 1.1 !important;
 }
-</style></head>
+</style>
+<style>
+/* Oculta los colores e indicaciones en el Rellenar Huecos */
+.cloze-activity .correct, 
+.cloze-activity .incorrect {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border: 1px solid #cccccc !important;
+}
+.cloze-activity .score, 
+.cloze-activity .feedback,
+.cloze-activity .toggle-feedback {
+    display: none !important;
+}
+</style>
+</head>
 <body class="exe-web-site" id="exe-node-1"><script type="text/javascript">document.body.className+=" js"</script>
 <div id="content">
 <p id="skipNav"><a href="#main" class="sr-av">Saltar navegación</a></p>
@@ -95,9 +112,9 @@ function comprobarPassword1() {
 <div id="ta55_130_2" class="block iDevice_content">
 <div class="exe-text"><div style="display: flex; justify-content: center; align-items: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 25px 0;">
 <div style="background-color: #ffffff; border: 3px solid #004A7F; border-radius: 10px; padding: 20px 35px; box-shadow: 0 4px 12px rgba(0, 74, 127, 0.15); text-align: center; width: 290px;">
-<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tiempo Global del Desafío</div>
+<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tempo Global do Scape Room</div>
 <div id="crono_global" style="color: #004a7f; font-size: 3.2rem; font-weight: bold; background-color: #f4f7f9; padding: 12px; border-radius: 6px; border: 1px solid #d0dae2; font-family: monospace; letter-spacing: 1px;">02:00:00</div>
-<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comenzar Desafío</button></div>
+<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">O tempo restante</button></div>
 </div>
 <p>
 <script>
@@ -200,214 +217,222 @@ function comprobarPassword1() {
 <article class="iDevice_wrapper textIdevice" id="id2">
 <div class="iDevice emphasis0" >
 <div id="ta2_129_2" class="block iDevice_content">
-<div class="exe-text"><figure class="exe-figure exe-image position-center license-pd" style="width: 100%px;"><img src="img2-santiago.jpg" alt="" width="100%" height="559" />
+<div class="exe-text"><figure class="exe-figure exe-image position-center license-pd" style="width: 100%;"><img src="img2-santiago.jpg" alt="" width="100%" height="559" />
 <figcaption class="figcaption"><span class="author">Xerada por IA</span>. <span class="title"><em>Santiago</em></span> <span class="license"><span class="sep">(</span><span>Dominio público</span><span class="sep">)</span></span></figcaption>
 </figure>
-<p></p>
-<p style="text-align: justify;">Santiago, ten nacionalidade colombiana, está empadroado en Lugo desde hai dous anos, ainda que</p>
 <figure class="exe-figure exe-image license-pd" style="float: right; width: 30%; margin: 0 0 15px 15px;"><img src="img-7-nie-santiago.png" alt="Foto carne Santiago" width="100%" height="auto" />
-<figcaption class="figcaption" style="font-size: 0.85em; color: #666; text-align: center;"><span class="author">Xerada por IA</span>. <span class="title"><em>Foto carne Santiago</em></span> <span class="license"><span class="sep">(</span><span>Dominio público</span><span class="&quot;sep)&lt;/span"></span></span></figcaption>
+<figcaption class="figcaption" style="font-size: 0.85em; color: #666; text-align: center;"><span class="author">Xerada por IA</span>. <span class="title"><em>Foto carne Santiago</em></span> <span class="license"><span class="sep">(</span><span>Dominio público</span><span class="sep">)</span></span></figcaption>
 </figure>
-<p style="text-align: justify;">situación irregular. O seu obxectivo é formarse para regularizar a súa situación a través do <strong>arraigo socioformativo</strong>, pero non todos os cursos permiten o mesmo camiño legal. Leva dous anos no país e quere aproveitar a figura deste arraigo para regularizar a súa situación. Presentáronselle estas dúas opcións de estudo, pero non sabe cal é compatible coa súa realidade legal actual:</p>
+<p style="text-align: justify;">Santiago, ten nacionalidade colombiana, está empadroado en Lugo desde hai dous anos, ainda que en situación irregular. O seu obxectivo é formarse para regularizar a súa situación a través do <strong>arraigamento socioformativo</strong>, pero non todos os cursos permiten o mesmo camiño legal. Presentaronselle estas dúas opcións de realizar estudos, pero non sabe cal é compatible coa súa realidade legal actual:</p>
 <ul>
-<li style="text-align: justify;"><strong>Opción A</strong>: Ciclo Superior de Construcións Metálicas (Dual Intensiva). Bolsa de 700€ e alta na Seguridade Social desde o primeiro curso. Realizará prácticas de formation na empresa tanto en primeiro curso como en segundo.</li>
-<li style="text-align: justify;"><strong>Opción B</strong>: Ciclo Superior de Programación da Produción (Ordinario). Formación en empresa só ao final (2º curso). Sen Bolsa pero con alta na Seguridade Social</li>
+<li style="text-align: justify;"><strong>Opción A</strong>: Ciclo Superior de Construcións Metálicas (Réxime Intensivo). Bolsa de 700€ e alta na Seguridade Social desde o primeiro curso. Realizará prácticas de formación na empresa tanto en primeiro como en segundo curso.</li>
+<li style="text-align: justify;"><strong>Opción B</strong>: Ciclo Superior de Programación da Produción por fabricación mecánica (Réxime Ordinario). Formación na empresa só ao final (2º curso). Sen Bolsa pero con alta na Seguridade Social cando faga a formación na empresa</li>
 </ul>
 <p>Unha vez que resolvas as distintas tarefas, poderás formar o código que solucione o Reto 1 e así poder acceder ao Reto 2. O código estará formado por un código alfanumérico formado por:</p>
 <ol style="list-style-type: upper-roman;">
-<li>Colocar las letras ABC que den resposta a primeira proba do reto 1, por exemplo se as respostas fóron A y A.... o código comezará por AA</li>
-<li>Na segunda proba deberás colocar o número máis habitual. Así si fóra tres, o código será AA3</li>
-<li>En la tercera proba o código será a da opción elixida, por exemplo se fóra a opción A.... o código final que te abriría o seguinte reto sería AA3A</li>
+<li>Colocar as letras ABC que den resposta a primeira proba do reto 1, por exemplo se as respostas fóron A y A.... o código comezará por AA</li>
+<li>Na segunda proba de cadeado cando a resolvas terás un número. Así se fose tres, o código será AA3</li>
+<li>Na terceira proba de cadeado cando a resolvas terás unha letra. Así se fose A, o código final que te abriría o seguinte reto sería AA3A</li>
 </ol>
+<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 15px; border-radius: 5px; font-family: sans-serif;">
+<summary style="font-weight: bold; cursor: pointer; font-size: 1.1em; color: #2c3e50;">🔑 Pista para conseguir o código que abra o Reto 2</summary>
+<div style="margin-top: 10px; line-height: 1.6; color: #333;">
+<p>Unha vez que resolvas as distintas tarefas, poderás formar o código que solucione o <strong>Reto 1</strong> e así poder acceder ao <strong>Reto 2</strong>. O código estará formado por un código alfanumérico composto por:</p>
+<ul style="padding-left: 20px;">
+<li style="margin-bottom: 8px;"><strong>Primeira proba:</strong> Colocar as dúas letras (A, B ou C) que den resposta as dúas cuestións.</li>
+<li style="margin-bottom: 8px;"><strong>Segunda proba de candado:</strong> Cando a resolvas, obterás un número.</li>
+<li style="margin-bottom: 8px;"><strong>Terceira proba de candado:</strong> Cando a resolvas, obterás unha letra final.</li>
+</ul>
+<hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;" />
+<p style="background-color: #eef2f7; padding: 10px; border-left: 4px solid #3498db; margin: 0;">💡 <strong>Exemplo de modelo:</strong> O código final que te abriría o seguinte reto podería ser <strong>AA3A</strong>. <br /><span style="font-size: 0.95em; color: #555;">Iso significaría que as respostas da primeira proba foron <strong>A</strong> e <strong>A</strong> (o código comeza por <em>AA</em>), que o número da segunda proba foi un <strong>3</strong> (<em>AA3</em>) e que a letra da terceira proba foi a <strong>A</strong> (<em>AA3A</em>).</span></p>
+</div>
+</details>
 <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 13pt; background-color: #e3f2fd; border-left: 6px solid #2196f3; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
-<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA DE SANTIAGO:</p>
-<p style="margin-bottom: 15px;">Para axudar a Santiago, consulta aquí a guía oficial sobre o Arraigo para a Formación:</p>
-<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#s2-2" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Clica aquí para abrir a ligazón </a></div></div>
+<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA SOBRE SANTIAGO:</p>
+<p style="margin-bottom: 15px;">Para axudar a Santiago, consulta aquí o Arraigamento Socioformativo:</p>
+<!-- BANNER DE PISTA LLAMATIVO -->
+<div style="background-color: #fff3e0; border: 2px dashed #ff9800; color: #e65100; padding: 12px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; font-size: 12pt; display: inline-block; max-width: 90%;">💡 PISTA IMPORTANTE: revisa só os artigos 125, 126 e 127.d</div>
+<br /><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#s2-2" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Pulsa aquí para abrir a ligazón </a></div></div>
 </div>
 </div>
 </article>
-<article class="iDevice_wrapper MultichoiceIdevice em_iDevice em_iDevice_question" id="id6">
+<article class="iDevice_wrapper QuizTestIdevice em_iDevice em_iDevice_question" id="id63">
+<script type="text/javascript">/*<![CDATA[*/
+var numQuestions = 2;
+var rawScore = 0;
+var actualScore = 0;
+var question0;
+var question1;
+var key0 = 1;
+var key1 = 2;
+function getAnswer()
+        {
+            for (var i=0; i < 3; i++)
+            {
+               if (document.getElementById("quizForm63").key0b63[i].checked)
+               {
+                  question0 = document.getElementById("quizForm63").key0b63[i].value;
+                  break;
+               }
+            }
+            
+            for (var i=0; i < 3; i++)
+            {
+               if (document.getElementById("quizForm63").key1b63[i].checked)
+               {
+                  question1 = document.getElementById("quizForm63").key1b63[i].value;
+                  break;
+               }
+            }
+            }
+        function calcRawScore(){
+
+            if (question0 == key0)
+            {
+               rawScore++;
+            }
+            if (question1 == key1)
+            {
+               rawScore++;
+            }
+        
+        }
+        
+        function calcScore2()
+        {
+            getAnswer();
+     
+            calcRawScore();
+            actualScore =  Math.round(rawScore / numQuestions * 100);
+            var id = "63";
+            document.getElementById("quizForm"+id).submitB.disabled = true;
+            var s = document.getElementById("quizFormScore"+id);
+                        var msg_str ="A puntuación é %d%%";            msg_str = msg_str.replace("%d",actualScore).replace("%%","%");            if (s) { s.innerHTML = "<div class='feedback'><p>"+msg_str+"</p></div>"; } else { alert(msg_str); }
+           
+        }
+    /*]]>*/</script>
 <div class="iDevice emphasis1" >
-<header class="iDevice_header"><h1 class="iDeviceTitle">TAREFA 1: As dúbidas de Santiago</h1></header>
+<header class="iDevice_header"><h1 class="iDeviceTitle">Tarefa 1: as dúbidas de Santiago</h1></header>
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
+<form name="quizForm63" id="quizForm63" action="#" class="quiz-test-form">
+<input type="hidden" name="passrate" id="passrate-63" value="100" />
 <section class="question">
-<form name="multi-choice-form-6_86" action="#" onsubmit="return false" class="activity-form">
 <h1 class="js-sr-av">Pregunta</h1>
-<div id="taquestion6_86" class="block question iDevice_content">
-<p><strong><span style="color: #007bc4;">Santiago pregunta cal sería o principal impedimento para optar pola Opción A (Réxime Dual Intensivo)?</span></strong></p>
+<div id="taquestion0b63" class="block iDevice_content">
+<p>1. Santiago pregunta cal sería o principal impedimento para optar pola Opción A (Réxime Dual Intensivo)?</p>
 </div>
 <section class="iDevice_answers">
 <h1 class="js-sr-av">Respostas</h1>
 <section class="iDevice_answer">
 <p class="iDevice_answer-field js-required">
-<label for="i6_89" class="sr-av"><a href="#answer-6_89">Opción 1</a></label><input type="radio" name="option6_86" id="i6_89" class="exe-radio-option exe-radio-option-0-3-6_86-multi"/>
+<label for="key0b631" class="sr-av"><a href="#answer-key0b631">Opción 1</a></label><input type="radio" name="key0b63" id="key0b631" value="0" />
 </p>
-<div class="iDevice_answer-content" id="answer-6_89"><div id="taans6_89" class="block iDevice_content">
-<p>Só se non ten o título de Bacharelato para acceder.</p>
+<div class="iDevice_answer-content" id="answer-key0b631">
+<div id="taoptionAnswer0q0b63" class="block iDevice_content">
+<p>A) Só se non ten o título de Bacharelato para acceder.</p>
 </div>
 </div>
 </section>
 <section class="iDevice_answer">
 <p class="iDevice_answer-field js-required">
-<label for="i6_92" class="sr-av"><a href="#answer-6_92">Opción 2</a></label><input type="radio" name="option6_86" id="i6_92" class="exe-radio-option exe-radio-option-1-3-6_86-multi"/>
+<label for="key0b632" class="sr-av"><a href="#answer-key0b632">Opción 2</a></label><input type="radio" name="key0b63" id="key0b632" value="1" />
 </p>
-<div class="iDevice_answer-content" id="answer-6_92"><div id="taans6_92" class="block iDevice_content">
-<p>A imposibilidade de ser dado de alta na Seguridade Social estando en situación irregular.</p>
+<div class="iDevice_answer-content" id="answer-key0b632">
+<div id="taoptionAnswer1q0b63" class="block iDevice_content">
+<p>B) A imposibilidade de ser dado de alta na Seguridade Social estando en situación irregular.</p>
 </div>
 </div>
 </section>
 <section class="iDevice_answer">
 <p class="iDevice_answer-field js-required">
-<label for="i6_253" class="sr-av"><a href="#answer-6_253">Opción 3</a></label><input type="radio" name="option6_86" id="i6_253" class="exe-radio-option exe-radio-option-2-3-6_86-multi"/>
+<label for="key0b633" class="sr-av"><a href="#answer-key0b633">Opción 3</a></label><input type="radio" name="key0b63" id="key0b633" value="2" />
 </p>
-<div class="iDevice_answer-content" id="answer-6_253"><div id="taans6_253" class="block iDevice_content">
-<p>Que a bolsa de 700€ é demasiado baixa para ter medios de vida propios para Santiago.</p>
+<div class="iDevice_answer-content" id="answer-key0b633">
+<div id="taoptionAnswer2q0b63" class="block iDevice_content">
+<p>C) Que a bolsa de 700€ é demasiado baixa para ter medios de vida propios para Santiago.</p>
 </div>
 </div>
 </section>
-</section>
-<section class="iDevice_feedbacks js-feedback">
-<h1 class="js-sr-av">Retroalimentación</h1>
-<section id="sa0b6_86" class="feedback js-hidden">
-<div id="taf6_89" class=" iDevice_content">
-<p><strong><span style="color: #007bc4;">¡INCORRECTO!</span></strong> Non é o motivo principal nesta análise legal.</p>
-</div>
-</section>
-<section id="sa1b6_86" class="feedback js-hidden">
-<div id="taf6_92" class=" iDevice_content">
-<p><strong><span style="color: #007bc4;">¡ EXACTO! </span></strong>O arraigo para a formación permite residir para estudar, pero NON autoriza a traballar (nin a alta na SS) ata que se complete a formación e se solicite a autorización de traballo.</p>
-</div>
-</section>
-<section id="sa2b6_86" class="feedback js-hidden">
-<div id="taf6_253" class=" iDevice_content">
-<p><span style="color: #007bc4;"><strong>¡INCORRECTO!</strong></span>: O importe da bolsa non é un impedimento legal; o problema é o vínculo laboral que implica.</p>
-</div>
-</section>
-</section>
-</form>
-<section class="iDevice_solution feedback js-hidden">
-<h1>Solución</h1>
-<ol>
-<li><a href="#answer-6_89">Incorrecto</a><span> (<a href="#sa0b6_86">Retroalimentación</a>)</span></li>
-<li><a href="#answer-6_92">Opción correcta</a><span> (<a href="#sa1b6_86">Retroalimentación</a>)</span></li>
-<li><a href="#answer-6_253">Incorrecto</a><span> (<a href="#sa2b6_86">Retroalimentación</a>)</span></li>
-</ol>
 </section>
 </section>
 <section class="question">
-<form name="multi-choice-form-6_95" action="#" onsubmit="return false" class="activity-form">
 <h1 class="js-sr-av">Pregunta</h1>
-<div id="taquestion6_95" class="block question iDevice_content">
-<p><strong><span style="color: #007bc4;">Santiago pregúntanos que si decide matricularse no Ciclo Superior de Construcións Metálicas (Dual Intensiva) e presenta a solicitude de arraigo, que sucederá cando o centro intente formalizar a súa relación coa empresa?</span></strong></p>
+<div id="taquestion1b63" class="block iDevice_content">
+<p>2) Santiago pregúntanos que si decide matricularse no Ciclo Superior de Construcións Metálicas (Dual Intensiva) e presenta a solicitude de arraigo, que sucederá cando o centro intente formalizar a súa relación coa empresa?</p>
 </div>
 <section class="iDevice_answers">
 <h1 class="js-sr-av">Respostas</h1>
 <section class="iDevice_answer">
 <p class="iDevice_answer-field js-required">
-<label for="i6_98" class="sr-av"><a href="#answer-6_98">Opción 1</a></label><input type="radio" name="option6_95" id="i6_98" class="exe-radio-option exe-radio-option-0-3-6_95-multi"/>
+<label for="key1b631" class="sr-av"><a href="#answer-key1b631">Opción 1</a></label><input type="radio" name="key1b63" id="key1b631" value="0" />
 </p>
-<div class="iDevice_answer-content" id="answer-6_98"><div id="taans6_98" class="block iDevice_content">
-<p>O centro poderá dalo de alta na Seguridade Social usando o seu pasaporte mentres espera o Número de Identificación de Extranjero (NIE).</p>
+<div class="iDevice_answer-content" id="answer-key1b631">
+<div id="taoptionAnswer0q1b63" class="block iDevice_content">
+<p>A) O centro poderá dalo de alta na Seguridade Social usando o seu pasaporte mentres espera o Número de Identificación de Extranjero (NIE).</p>
 </div>
 </div>
 </section>
 <section class="iDevice_answer">
 <p class="iDevice_answer-field js-required">
-<label for="i6_259" class="sr-av"><a href="#answer-6_259">Opción 2</a></label><input type="radio" name="option6_95" id="i6_259" class="exe-radio-option exe-radio-option-1-3-6_95-multi"/>
+<label for="key1b632" class="sr-av"><a href="#answer-key1b632">Opción 2</a></label><input type="radio" name="key1b63" id="key1b632" value="1" />
 </p>
-<div class="iDevice_answer-content" id="answer-6_259"><div id="taans6_259" class="block iDevice_content">
-<p>A Xunta de Galicia concederalle un permiso especial automático por ser un ciclo de alta demanda.</p>
+<div class="iDevice_answer-content" id="answer-key1b632">
+<div id="taoptionAnswer1q1b63" class="block iDevice_content">
+<p>B) A Xunta de Galicia concederalle un permiso especial automático por ser un ciclo de alta demanda.</p>
 </div>
 </div>
 </section>
 <section class="iDevice_answer">
 <p class="iDevice_answer-field js-required">
-<label for="i6_262" class="sr-av"><a href="#answer-6_262">Opción 3</a></label><input type="radio" name="option6_95" id="i6_262" class="exe-radio-option exe-radio-option-2-3-6_95-multi"/>
+<label for="key1b633" class="sr-av"><a href="#answer-key1b633">Opción 3</a></label><input type="radio" name="key1b63" id="key1b633" value="2" />
 </p>
-<div class="iDevice_answer-content" id="answer-6_262"><div id="taans6_262" class="block iDevice_content">
-<p>O centro non poderá tramitar o seu alta na Seguridade Social, o que impedirá que Santiago cumpra os requisitos do ciclo e, por tanto, perderá a posibilidade de manter o arraigo para a formación nesa modalidade.</p>
+<div class="iDevice_answer-content" id="answer-key1b633">
+<div id="taoptionAnswer2q1b63" class="block iDevice_content">
+<p>C) O centro non poderá tramitar o seu alta na Seguridade Social, o que impedirá que Santiago cumpra os requisitos do ciclo e, por tanto, perderá a posibilidade de manter o arraigo para a formación nesa modalidade.</p>
 </div>
 </div>
 </section>
 </section>
-<section class="iDevice_feedbacks js-feedback">
-<h1 class="js-sr-av">Retroalimentación</h1>
-<section id="sa0b6_95" class="feedback js-hidden">
-<div id="taf6_98" class=" iDevice_content">
-<p><strong><span style="color: #007bc4;">¡INCORRECTO!</span>.</strong> A Seguridade Social esixe obrigatoriamente un NIE con autorización para residir e traballar (ou polo menos o dereito ao alta), cousa que Santiago non ten polo seu estado irregular.</p>
+</section>
+<div class="block iDevice_buttons">
+<p><input type="submit" name="submitB" value="ENVIAR AS RESPOSTAS" /> <span class="js-hidden js-warning">Activar JavaScript</span></p>
 </div>
-</section>
-<section id="sa1b6_95" class="feedback js-hidden">
-<div id="taf6_259" class=" iDevice_content">
-<p><strong><span style="color: #007bc4;">¡INCORRECTO!</span></strong>. A normativa de estranxeiría é estatal e non depende da demanda de emprego do ciclo nin da administración educativa.</p>
-</div>
-</section>
-<section id="sa2b6_95" class="feedback js-hidden">
-<div id="taf6_262" class=" iDevice_content">
-<p><strong><span style="color: #007bc4;">¡CORRECTO!. </span></strong><span style="color: #000000;">Esta é a "trampa" da Dual Intensiva para persoas en situación irregular: a obrigatoriedade do alta na SS desde o primeiro día bloquea o proceso administrativo. </span></p>
-</div>
-</section>
-</section>
+<div id="quizFormScore63"></div>
 </form>
-<section class="iDevice_solution feedback js-hidden">
-<h1>Solución</h1>
-<ol>
-<li><a href="#answer-6_98">Opción correcta</a><span> (<a href="#sa0b6_95">Retroalimentación</a>)</span></li>
-<li><a href="#answer-6_259">Incorrecto</a><span> (<a href="#sa1b6_95">Retroalimentación</a>)</span></li>
-<li><a href="#answer-6_262">Incorrecto</a><span> (<a href="#sa2b6_95">Retroalimentación</a>)</span></li>
-</ol>
-</section>
-</section>
 </div>
 </div>
 </div>
 </article>
-<article class="iDevice_wrapper ClozeIdevice em_iDevice em_iDevice_question" id="id7">
+<article class="iDevice_wrapper candadoIdevice em_iDevice" id="id64">
 <div class="iDevice emphasis1" >
-<header class="iDevice_header"><h1 class="iDeviceTitle">TAREFA 2: Ideas para o futuro</h1></header>
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Cadeado</h1></header>
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
-<section id="ta7_116" class="block instructions iDevice_content">
-<p>Lea o parágrafo que aparece abaixo e complete as palabras que faltan, non se admiten números</p>
-</section>
-
-    <section class="activity" id="activity-7_117"><form name="cloze-form-7_117" action="#" class="activity-form cloze-activity-form"><div id="cloze7_117"><input type="hidden" name="clozeFlag7_117.strictMarking" id="clozeFlag7_117.strictMarking" value="false"/>
-<input type="hidden" name="clozeFlag7_117.checkCaps" id="clozeFlag7_117.checkCaps" value="false"/>
-<input type="hidden" name="clozeFlag7_117.instantMarking" id="clozeFlag7_117.instantMarking" value="false"/>
-<p>Para solicitar o Arraigo para a Formación, Santiago debe acreditar unha permanencia continuada en España de polo menos  <label for="clozeBlank7_117.0" class="sr-av">Encher ocos (1):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank7_117.0" style="width:4ch" /><span style="display:none" id="clozeAnswer7_117.0">JXUwMDNjJXUwMDBiJXUwMDFhJXUwMDA2
-</span>  anos. Ademáis, debe comprometerse a realizar unha formación profesional. Unha vez superada a formación, Santiago poderá solicitar unha autorización de residencia e traballo de  <label for="clozeBlank7_117.1" class="sr-av">Encher ocos (2):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank7_117.1" style="width:4ch" /><span style="display:none" id="clozeAnswer7_117.1">JXUwMDNjJXUwMDBiJXUwMDFhJXUwMDA2
-</span>  anos de duración, sempre que presente un  <label for="clozeBlank7_117.2" class="sr-av">Encher ocos (3):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank7_117.2" style="width:8ch" /><span style="display:none" id="clozeAnswer7_117.2">JXUwMDNiJXUwMDBjJXUwMDAxJXUwMDFhJXUwMDA2JXUwMDEzJXUwMDE1JXUwMDFi
-</span>  de traballo relacionado cos seus estudos.</p><div class="block iDevice_buttons"><p><input class="button" type="submit" name="submit7_117" value="Enviar"  id="submit7_117" />
-<input type="button" name="restart7_117" value="Reiniciar" style="display:none" id="restart7_117" onclick="$exe.cloze.restart('7_117')" />
- <input type="button" name="7_117showAnswersButton" value="Amosar respostas" style="display:none" id="showAnswersButton7_117" onclick="$exe.cloze.fillInputs('7_117')" />
-<span class="js-hidden js-warning">Activar JavaScript</span></p></div><div id="clozeScore7_117"></div></div></form></section></div>
+<div id="ta64_127_2" class="block iDevice_content">
+<div class="candado-IDevice"><div class="candado-version js-hidden">1</div><div class="candado-instructions"><div style="background-color: #f0f5fa; border-left: 5px solid #005697; padding: 15px; border-radius: 4px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><strong style="color: #005697; font-size: 1.2em; display: block; margin-bottom: 8px;"> 🔒 INSTRUCIÓNS DO CADEADO </strong>
+<p style="margin: 0; color: #333; line-height: 1.5;">Lea o parágrafo que aparece abaixo e complete as palabras que faltan. O código consta de <strong>dous números e unha palabra en maiúscula</strong>. Ese será o código para abrir o cadeado e nesa mesma orde.</p>
+</div>
+<div style="background-color: #fff; border: 1px dashed #800000; padding: 20px; border-radius: 6px; text-align: justify;"><cite> <span style="color: #800000; font-size: 1.1em; line-height: 1.6; display: block;"> Para solicitar o Arraigamento socioformativo, Santiago debe acreditar unha permanencia continuada en España de polo menos ______ anos. Ademais, debe comprometerse a realizar unha formación profesional. Unha vez superada a formación, Santiago poderá solicitar unha autorización de residencia e traballo de _____ anos de duración, sempre que presente un ______________ de traballo relacionado cos seus estudos. </span> </cite></div></div><div class="candado-retro"><p>O teu código para incorporar a secuencia anterior é <strong><span style="color: #800000;">2</span></strong></p></div><div class="candado-DataGame js-hidden" >%E9%B0%F1%F3%FC%F6%F3%F6%FD%C6%FB%FF%F7%B0%A8%A4%A2%BE%B0%F1%F3%FC%F6%F3%F6%FD%C1%FD%FE%E7%E6%FB%FD%FC%B0%A8%B0%A0%A0%D1%DD%DC%C6%C0%D3%C6%DD%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%DB%FC%E1%E6%E0%E7%F1%E6%FB%FD%FC%E1%B0%A8%B0%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%C0%F7%E6%E0%FD%B0%A8%B0%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%C1%FA%FD%E5%DF%FB%FC%FB%FF%FB%E8%F7%B0%A8%F4%F3%FE%E1%F7%BE%B0%F1%F3%FC%F6%F3%F6%FD%C0%F7%F0%FD%FD%E6%B0%A8%F4%F3%FE%E1%F7%BE%B0%F1%F3%FC%F6%F3%F6%FD%D3%E6%E6%F7%FF%E2%E1%B0%A8%B0%A3%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%D7%E0%E0%FD%E0%DF%F7%E1%E1%F3%F5%F7%B0%A8%B0%C4%FD%FE%E4%F7%B2%F3%B2%FB%FC%E6%F7%FC%E6%F3%FE%FD%B0%BE%B0%FF%E1%F5%E1%B0%A8%E9%B0%FF%E1%F5%DD%F9%B0%A8%B0%D3%F1%F7%E2%E6%F3%E0%B0%BE%B0%FF%E1%F5%DF%FB%FC%FB%FF%FB%E8%F7%B0%A8%B0%DF%FB%FC%FB%FF%FB%E8%F3%E0%B0%BE%B0%FF%E1%F5%DF%F3%EA%FB%FF%FB%E8%F7%B0%A8%B0%DF%F3%EA%FB%FF%FB%E8%F3%E0%B0%BE%B0%FF%E1%F5%C6%FB%FF%F7%B0%A8%B0%DE%7F%FF%FB%E6%F7%B2%F6%F7%B2%E6%FB%F7%FF%E2%FD%B2%BA%FF%FF%A8%E1%E1%BB%B0%BE%B0%FF%E1%F5%DB%FC%E1%E6%E0%E7%F1%E6%FB%FD%FC%E1%B0%A8%B0%DB%FC%E1%E6%E0%E7%F1%F1%FB%FD%FC%F7%E1%B0%BE%B0%FF%E1%F5%D4%F7%F7%F6%F0%F3%F1%F9%B0%A8%B0%C0%F7%E6%E0%FD%F3%FE%FB%FF%F7%FC%E6%F3%F1%FBa%FC%B0%BE%B0%FF%E1%F5%D1%FD%F6%F7%D3%F1%F1%F7%E1%E1%B0%A8%B0%D1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%D7%FC%E6%F7%E0%D1%FD%F6%F7%B0%A8%B0%DB%FC%E6%E0%FD%F6%E7%E8%F1%F3%B2%F7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%D7%E0%E0%FD%E0%D1%FD%F6%F7%B0%A8%B0%D7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B2%FC%FD%B2%F7%E1%B2%F1%FD%E0%E0%F7%F1%E6%FD%B0%BE%B0%FF%E1%F5%C0%F7%E3%E7%FB%E0%F7%F6%D3%F1%F1%F7%E1%E1%D9%F7%EB%B0%A8%B0%D7%E1%B2%FC%F7%F1%F7%E1%F3%E0%FB%FD%B2%F7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%C1%E7%F1%F1%F7%E1%E1%F7%E1%B0%A8%B03%D1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%D7%EA%F1%F7%FE%F7%FC%E6%F7%B3%B2%EE%B23%D5%F7%FC%FB%F3%FE%B3%B2%EE%B23%DF%E7%EB%B2%F0%FB%F7%FC%B3%B2%EE%B23%C2%F7%E0%F4%F7%F1%E6%FD%B3%B0%BE%B0%FF%E1%F5%D4%F3%FB%FE%E7%E0%F7%E1%B0%A8%B03%DC%FD%B2%F7%E0%F3%B2%F7%E1%FD%B3%B2%EE%B23%DB%FC%F1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%DC%FD%B2%F7%E1%B2%F1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%DE%FD%B2%E1%F7%FC%E6%FB%FF%FD%E1%B3%B2%EE%B23%D7%E0%E0%FD%E0%B3%B0%BE%B0%FF%E1%F5%D7%C1%FA%FD%E5%D3%F1%E6%FB%E4%FB%E6%EB%B0%A8%B0%DF%FD%E1%E6%E0%F3%E0%B2%FE%F3%B2%F3%F1%E6%FB%E4%FB%F6%F3%F6%B0%BE%B0%FF%E1%F5%C1%E7%F0%FF%FB%E6%B0%A8%B0%D1%FD%FF%E2%E0%FD%F0%F3%E0%B0%EF%EF</div><div class="candado-bns js-hidden">Su navegador no es compatible con esta herramienta.</div></div>
+</div>
+</div>
 </div>
 </div>
 </article>
-<article class="iDevice_wrapper ClozeIdevice em_iDevice em_iDevice_question" id="id8">
+<article class="iDevice_wrapper candadoIdevice em_iDevice" id="id65">
 <div class="iDevice emphasis1" >
-<header class="iDevice_header"><h1 class="iDeviceTitle">O consello asesor</h1></header>
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Cadeado</h1></header>
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
-<section id="ta8_116" class="block instructions iDevice_content">
-<p>Lea o parágrafo que aparece abaixo e complete as palabras que faltan, será o noso consello para Santiago.</p>
-</section>
-
-    <section class="activity" id="activity-8_117"><form name="cloze-form-8_117" action="#" class="activity-form cloze-activity-form"><div id="cloze8_117"><input type="hidden" name="clozeFlag8_117.strictMarking" id="clozeFlag8_117.strictMarking" value="false"/>
-<input type="hidden" name="clozeFlag8_117.checkCaps" id="clozeFlag8_117.checkCaps" value="false"/>
-<input type="hidden" name="clozeFlag8_117.instantMarking" id="clozeFlag8_117.instantMarking" value="false"/>
-<p>Como equipo de integración, a nosa recomendación para Santiago é clara: Debe elixir a Opción <label for="clozeBlank8_117.0" class="sr-av">Encher ocos (1):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank8_117.0" style="width:1ch" /><span style="display:none" id="clozeAnswer8_117.0">JXUwMDFh
-</span>.</p>
-<p>Por que? No réxime <label for="clozeBlank8_117.1" class="sr-av">Encher ocos (2):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank8_117.1" style="width:9ch" /><span style="display:none" id="clozeAnswer8_117.1">JXUwMDM3JXUwMDFkJXUwMDE2JXUwMDBkJXUwMDA3JXUwMDBmJXUwMDEzJXUwMDFiJXUwMDA2
-</span>, Santiago pode obter o permiso de residencia por estudos sen necesidade de traballar o primeiro ano. Se elixira a Opción <label for="clozeBlank8_117.2" class="sr-av">Encher ocos (3):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank8_117.2" style="width:1ch" /><span style="display:none" id="clozeAnswer8_117.2">JXUwMDE5
-</span>, o centro educativo non podería formalizar a súa matrícula na modalidade Dual ao non poder tramitar a súa alta na <label for="clozeBlank8_117.3" class="sr-av">Encher ocos (4):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank8_117.3" style="width:17ch" /><span style="display:none" id="clozeAnswer8_117.3">JXUwMDBiJXUwMDM2JXUwMDAyJXUwMDEyJXUwMDA3JXUwMDFiJXUwMDBkJXUwMDA1JXUwMDA1JXUw
-MDAxJXUwMDQ1JXUwMDczJXUwMDNjJXUwMDBjJXUwMDBhJXUwMDA4JXUwMDBk
-</span>, o que invalidaría a súa solicitude de arraigo.</p>
-<p>Unha vez que Santiago remate o primeiro curso co permiso de formación, estará nunha posición legal moito máis sólida para facer as prácticas en segundo e dar o salto ao mercado laboral legal.</p><div class="block iDevice_buttons"><p><input class="button" type="submit" name="submit8_117" value="Enviar"  id="submit8_117" />
-<input type="button" name="restart8_117" value="Reiniciar" style="display:none" id="restart8_117" onclick="$exe.cloze.restart('8_117')" />
- <input type="button" name="8_117showAnswersButton" value="Amosar respostas" style="display:none" id="showAnswersButton8_117" onclick="$exe.cloze.fillInputs('8_117')" />
-<span class="js-hidden js-warning">Activar JavaScript</span></p></div><div id="clozeScore8_117"></div></div></form></section></div>
+<div id="ta65_128_2" class="block iDevice_content">
+<div class="candado-IDevice"><div class="candado-version js-hidden">1</div><div class="candado-instructions"><!-- Caixa de Instrucións Chamativa - Estilo Azul CREAGAL -->
+<div style="background-color: #f0f5fa; border-left: 5px solid #005697; padding: 15px; border-radius: 4px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><strong style="color: #005697; font-size: 1.2em; display: block; margin-bottom: 8px;"> 🔒 INSTRUCIÓNS DO CADEADO </strong>
+<p style="margin: 0; color: #333; line-height: 1.5;">Lea o parágrafo que aparece abaixo e complete as palabras que faltan, será o noso consello para Santiago. O código para o cadeado son as letras e cando sexan palabras a primeira letra de cada unha. Son <strong>cinco letras</strong> o código do cadeado que te dará acceso á última palabra para ter o código do Reto 1 e poder abrir o Reto 2.</p>
+</div>
+<!-- Texto a Completar - Mantemos o granate para contrastar o exercicio -->
+<div style="background-color: #fff; border: 1px dashed #800000; padding: 20px; border-radius: 6px;"><cite> <span style="color: #800000; font-size: 1.1em; line-height: 1.6; display: block;"> Como equipo de integración, a nosa recomendación para Santiago é clara: Debe elixir a Opción___, Por que? No réxime __________ , Santiago pode ter máis tempo para resolver o expediente do seu permiso de residencia por arraigamento socioformativo, sen necesidade de afiliar na Seguridade Social no primeiro ano xa que a Seguridade Social non o faría.</span></cite><cite><span style="color: #800000; font-size: 1.1em; line-height: 1.6; display: block;">Se elixira a Opción __ , o centro educativo non podería formalizar a súa matrícula no réxime Dual Intensivo ao non poder tramitar a súa alta na _________ ____________ , o que invalidaría a súa solicitude de arraigo. Unha vez que Santiago remate o primeiro curso co permiso de , estará nunha posición legal moito máis sólida para facer as prácticas en segundo e dar o salto ao mercado laboral legal. </span> </cite></div></div><div class="candado-retro"><p>A letra que che falta para o código e poder abrir o seguinte reto e <strong><span style="color: #800000;">B</span></strong></p></div><div class="candado-DataGame js-hidden" >%E9%B0%F1%F3%FC%F6%F3%F6%FD%C6%FB%FF%F7%B0%A8%A4%A2%BE%B0%F1%F3%FC%F6%F3%F6%FD%C1%FD%FE%E7%E6%FB%FD%FC%B0%A8%B0%D0%DD%D3%C1%C1%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%DB%FC%E1%E6%E0%E7%F1%E6%FB%FD%FC%E1%B0%A8%B0%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%C0%F7%E6%E0%FD%B0%A8%B0%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%C1%FA%FD%E5%DF%FB%FC%FB%FF%FB%E8%F7%B0%A8%F4%F3%FE%E1%F7%BE%B0%F1%F3%FC%F6%F3%F6%FD%C0%F7%F0%FD%FD%E6%B0%A8%E6%E0%E7%F7%BE%B0%F1%F3%FC%F6%F3%F6%FD%D3%E6%E6%F7%FF%E2%E1%B0%A8%B0%A3%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%D7%E0%E0%FD%E0%DF%F7%E1%E1%F3%F5%F7%B0%A8%B0%C4%FD%FE%E4%F7%B2%F3%B2%FB%FC%E6%F7%FC%E6%F3%FE%FD%B0%BE%B0%FF%E1%F5%E1%B0%A8%E9%B0%FF%E1%F5%DD%F9%B0%A8%B0%D3%F1%F7%E2%E6%F3%E0%B0%BE%B0%FF%E1%F5%DF%FB%FC%FB%FF%FB%E8%F7%B0%A8%B0%DF%FB%FC%FB%FF%FB%E8%F3%E0%B0%BE%B0%FF%E1%F5%DF%F3%EA%FB%FF%FB%E8%F7%B0%A8%B0%DF%F3%EA%FB%FF%FB%E8%F3%E0%B0%BE%B0%FF%E1%F5%C6%FB%FF%F7%B0%A8%B0%DE%7F%FF%FB%E6%F7%B2%F6%F7%B2%E6%FB%F7%FF%E2%FD%B2%BA%FF%FF%A8%E1%E1%BB%B0%BE%B0%FF%E1%F5%DB%FC%E1%E6%E0%E7%F1%E6%FB%FD%FC%E1%B0%A8%B0%DB%FC%E1%E6%E0%E7%F1%F1%FB%FD%FC%F7%E1%B0%BE%B0%FF%E1%F5%D4%F7%F7%F6%F0%F3%F1%F9%B0%A8%B0%C0%F7%E6%E0%FD%F3%FE%FB%FF%F7%FC%E6%F3%F1%FBa%FC%B0%BE%B0%FF%E1%F5%D1%FD%F6%F7%D3%F1%F1%F7%E1%E1%B0%A8%B0%D1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%D7%FC%E6%F7%E0%D1%FD%F6%F7%B0%A8%B0%DB%FC%E6%E0%FD%F6%E7%E8%F1%F3%B2%F7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%D7%E0%E0%FD%E0%D1%FD%F6%F7%B0%A8%B0%D7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B2%FC%FD%B2%F7%E1%B2%F1%FD%E0%E0%F7%F1%E6%FD%B0%BE%B0%FF%E1%F5%C0%F7%E3%E7%FB%E0%F7%F6%D3%F1%F1%F7%E1%E1%D9%F7%EB%B0%A8%B0%D7%E1%B2%FC%F7%F1%F7%E1%F3%E0%FB%FD%B2%F7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%C1%E7%F1%F1%F7%E1%E1%F7%E1%B0%A8%B03%D1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%D7%EA%F1%F7%FE%F7%FC%E6%F7%B3%B2%EE%B23%D5%F7%FC%FB%F3%FE%B3%B2%EE%B23%DF%E7%EB%B2%F0%FB%F7%FC%B3%B2%EE%B23%C2%F7%E0%F4%F7%F1%E6%FD%B3%B0%BE%B0%FF%E1%F5%D4%F3%FB%FE%E7%E0%F7%E1%B0%A8%B03%DC%FD%B2%F7%E0%F3%B2%F7%E1%FD%B3%B2%EE%B23%DB%FC%F1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%DC%FD%B2%F7%E1%B2%F1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%DE%FD%B2%E1%F7%FC%E6%FB%FF%FD%E1%B3%B2%EE%B23%D7%E0%E0%FD%E0%B3%B0%BE%B0%FF%E1%F5%D7%C1%FA%FD%E5%D3%F1%E6%FB%E4%FB%E6%EB%B0%A8%B0%DF%FD%E1%E6%E0%F3%E0%B2%FE%F3%B2%F3%F1%E6%FB%E4%FB%F6%F3%F6%B0%BE%B0%FF%E1%F5%C1%E7%F0%FF%FB%E6%B0%A8%B0%D1%FD%FF%E2%E0%FD%F0%F3%E0%B0%EF%EF</div><div class="candado-bns js-hidden">Su navegador no es compatible con esta herramienta.</div></div>
+</div>
+</div>
 </div>
 </div>
 </article>

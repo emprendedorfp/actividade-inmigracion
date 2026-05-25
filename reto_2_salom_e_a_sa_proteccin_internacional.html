@@ -35,7 +35,22 @@
     text-align: left !important;
     line-height: 1.1 !important;
 }
-</style></head>
+</style>
+<style>
+/* Oculta los colores e indicaciones en el Rellenar Huecos */
+.cloze-activity .correct, 
+.cloze-activity .incorrect {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border: 1px solid #cccccc !important;
+}
+.cloze-activity .score, 
+.cloze-activity .feedback,
+.cloze-activity .toggle-feedback {
+    display: none !important;
+}
+</style>
+</head>
 <body class="exe-web-site" id="exe-node-2"><script type="text/javascript">document.body.className+=" js"</script>
 <div id="content">
 <p id="skipNav"><a href="#main" class="sr-av">Saltar navegación</a></p>
@@ -97,9 +112,9 @@ function comprobarPassword2() {
 <div id="ta56_131_2" class="block iDevice_content">
 <div class="exe-text"><div style="display: flex; justify-content: center; align-items: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 25px 0;">
 <div style="background-color: #ffffff; border: 3px solid #004A7F; border-radius: 10px; padding: 20px 35px; box-shadow: 0 4px 12px rgba(0, 74, 127, 0.15); text-align: center; width: 290px;">
-<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tiempo Global del Desafío</div>
+<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tempo Global do Scape room</div>
 <div id="crono_global" style="color: #004a7f; font-size: 3.2rem; font-weight: bold; background-color: #f4f7f9; padding: 12px; border-radius: 6px; border: 1px solid #d0dae2; font-family: monospace; letter-spacing: 1px;">02:00:00</div>
-<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comenzar Desafío</button></div>
+<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">O tempo restante</button></div>
 </div>
 <p>
 <script>
@@ -203,11 +218,11 @@ function comprobarPassword2() {
 <div class="iDevice emphasis0" >
 <div id="ta3_130_2" class="block iDevice_content">
 <div class="exe-text"><p><img src="img3-salome.png" alt="" width="100%" height="768" /></p>
-<p style="text-align: justify;">Salomé traballaba desde facía dez anos no Porto do Callao no Perú, cursando o título de Profesional Técnico de Xestión de Loxística; no seu momento denunciou na policía que nun contedor depositáranse</p>
+<p style="text-align: justify;">Salomé traballaba desde hai dez anos no Porto do Callao no Perú, cursando o título de Profesional Técnico de Xestión de Loxística; no seu momento denunciou na policía que nun contedor depositáranse</p>
 <figure class="exe-figure exe-image license-pd" style="float: right; width: 20%; margin: 0 0 15px 15px;"><img src="img_8_nie_salome.png" alt="Foto carné Salomé" width="100%" height="auto" />
 <figcaption class="figcaption" style="font-size: 0.85em; color: #666; text-align: center;"><span class="author">Xerada por IA</span>. <span class="title"><em>Foto carné Salomé</em></span> <span class="license"><span class="sep">(</span><span>Dominio público</span><span class="&quot;sep)&lt;/span"></span></span></figcaption>
 </figure>
-<p style="text-align: justify;">grandes cantidades de cocaína; pronto empezaron a ameazala, por iso non atopou outra solución que recollendo os seus pequenos aforros abandonar o seu país, trasladándose a España, chegou ao Aeroporto de Barajas, trasladándose a Lugo, onde manifestou a súa vontade de solicitar Protección Internacional (Asilo). O seu soño é poder homologar o seu título, pero será laborioso, por iso quere matricularse no Ciclo Superior de Administración e Finanzas nun centro público de formación profesional.</p>
+<p style="text-align: justify;">grandes cantidades de cocaína; pronto empezaron a ameazala, por iso non atopou outra solución que  cos seus pequenos aforros abandonar o seu país, trasladándose a España, chegou ao Aeroporto de Barajas, trasladándose a Lugo, onde manifestou a súa vontade de solicitar Protección Internacional (Asilo). O seu soño é poder homologar o seu título, pero será laborioso, por iso quere matricularse no Ciclo Superior de Administración e Finanzas nun centro público de formación profesional.</p>
 <p style="text-align: justify;">Unha vez que resolvas as distintas tarefas, poderás formar o código que solucione o Reto 2 e así poder acceder ao Reto 3. O código estará formado por un código alfanumérico formado por:</p>
 <ul>
 <li style="text-align: justify;">Na tarefa de encher ocos, temos dúas cores, a palabra inicial de cada un deles son as dúas primeiras letras do código en maiúsculas.</li>
@@ -215,11 +230,25 @@ function comprobarPassword2() {
 <li style="text-align: justify;">No video interactivo o número correcto de lugares onde solicitar a protección internacional das opcións propostas.</li>
 <li style="text-align: justify;">No video interactivo o tempo que tardará en obter resposta como mínimo.</li>
 </ul>
-<p style="text-align: justify;">Desta forma unha posible solución, como modelo, podería ser NV159. Iso significaría que as cores foron Negro e Verde, a primera, segunda as tres cuestións fóron: 1, 2 e 3</p>
+<p style="text-align: justify;">Desta forma unha posible solución, como modelo, podería ser NV159. Iso significaría que as cores foron Negro e Verde, e as respostas ao video interactivo na primeira pregunta (1), na segunda (5) e na terceira (9).</p>
+<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 15px; border-radius: 5px; font-family: sans-serif;">
+<summary style="font-weight: bold; cursor: pointer; font-size: 1.1em; color: #2c3e50;">🔑 Pista para conseguir o código que abra o candado Reto 3</summary>
+<div style="margin-top: 10px; line-height: 1.6; color: #333;">
+<p>Unha vez que resolvas as distintas tarefas, poderás formar o código que solucione o <strong>Reto 2</strong> e así poder acceder ao <strong>Reto 3</strong>. O código estará formado por un código alfanumérico composto por:</p>
+<ul style="padding-left: 20px;">
+<li style="margin-bottom: 8px;"><strong>Tarefa de encher ocos:</strong> Temos dúas cores; a palabra inicial de cada unha delas son as <strong>dúas primeiras letras</strong> do código en maiúsculas.</li>
+<li style="margin-bottom: 8px;"><strong>Vídeo interactivo (1ª cuestión):</strong> O número da resposta concreta.</li>
+<li style="margin-bottom: 8px;"><strong>Vídeo interactivo (Lugares):</strong> O número correcto de lugares onde solicitar a protección internacional das opcións propostas.</li>
+<li style="margin-bottom: 8px;"><strong>Vídeo interactivo (Tempo):</strong> O número co tempo mínimo que tardará en obter resposta.</li>
+</ul>
+<hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;" />
+<p style="background-color: #eef2f7; padding: 10px; border-left: 4px solid #3498db; margin: 0;">💡 <strong>Exemplo de modelo:</strong> Unha posible solución podería ser <strong>NV159</strong>. Iso significaría que as cores foron <strong>N</strong>egro e <strong>V</strong>erde, e as respostas ao vídeo interactivo foron a <strong>1</strong> na primeira pregunta, <strong>5</strong> na segunda y <strong>9</strong> na terceira.</p>
+</div>
+</details>
 <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 13pt; background-color: #e3f2fd; border-left: 6px solid #2196f3; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
-<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA DE SALOMÉ:</p>
-<p style="margin-bottom: 15px;">Para axudar a Salomé, consulta aquí la información de la Policía Nacional sobre Asilo y Refugiado:</p>
-<a href="https://www.policia.es/_es/extranjeria_asilo_y_refugio.php" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Clica aquí para abrir a ligazón </a></div></div>
+<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA SOBRE SALOMÉ:</p>
+<p style="margin-bottom: 15px;">Para axudar a Salomé, consulta aquí a información da Policía Nacional sobre Asilo e Refuxiado:</p>
+<a href="https://www.policia.es/_es/extranjeria_asilo_y_refugio.php" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Pulsa aquí para abrir a ligazón </a></div></div>
 </div>
 </div>
 </article>
@@ -257,7 +286,7 @@ function comprobarPassword2() {
 <div class="iDevice_content_wrapper">
 <div id="ta20_127_2" class="block iDevice_content">
 			<div class="exe-interactive-video">				<p id="exe-interactive-video-file" class="js-hidden">					<a href="https://www.youtube.com/watch?v=CHEB2rTw1bc?si=IShpylz2DCwXIV4M">com/watch?v=CHEB2rTw1bc?si=IShpylz2DCwXIV4M</a>				</p>				<script type="text/javascript">//<![CDATA[					
-var InteractiveVideo = {"slides":[{"type":"multipleChoice","question":"<p><em><strong>Cal é a causa da solicitude de protección internacional de Salomé?</strong></em> Lembra a orde de resposta para o código</p>","answers":[["Amenazas por luchar por los derechos de las personas",0],["Amenazas de bandas criminales y sin protección de las autoridades",1],["Amenazas por sus ideas políticas",0],["Vícitima de explotación sexual",0]],"startTime":153},{"type":"multipleChoice","question":"<p><strong>Sinala todas as opcións onde Salomé podería pedir asilo.</strong> Lembra o número de respostas para o código</p>","answers":[["Posto Fronteirizo",1],["Hospital",0],["Oficina de Extranjería",1],["Oficinas da Xunta de Galicia",0],["Comisaría da Policía Nacional",1],["Cruz Vermella",0]],"startTime":256},{"type":"cloze","text":"<p>Salomé unha vez feita a solicitude de asilo obterá resposta nun prazo máximo de <span style=\"text-decoration: line-through;\">seis</span> meses, mentres tanto terá asistencia <span style=\"text-decoration: line-through;\">médica</span> e acceso ás prestacións <span style=\"text-decoration: line-through;\">sociais</span>, tamén terá recoñecido o derechoa a procura de <span style=\"text-decoration: line-through;\">emprego</span>.</p>","startTime":423}],"i18n":{"start":"Inicio","results":"Resultados","slide":"Diapositiva (fotograma)","score":"Puntuación","seen":"Visto","total":"Total","seeAll":"debe ver todo el contenido y contestar a las preguntas","noSlides":"El vídeo no tiene contenidos interactivos.","goOn":"Continuar","error":"Error","dataError":"Código no compatible","onlyOne":"Sólo un vídeo interactivo por página.","cover":"Portada","fsWarning":"Salga del modo pantalla completa (tecla Esc) para ver la diapositiva","right":"¡Correcto!","wrong":"Incorrecto","sortableListInstructions":"Pinche y arrastre o use las flechas.","up":"Subir","down":"Bajar","rightAnswer":"Respuesta correcta:","notAnswered":"Por favor termine la actividad","check":"Comprobar","newWindow":"Ventana nueva","msgOnlySaveAuto":"Su puntuación se guardará después de cada pregunta. Sólo puede jugar una vez.","msgSaveAuto":"Su puntuación se guardará automáticamente después de cada pregunta.","msgYouScore":"Su puntuación","msgScoreScorm":"La puntuación no se puede guardar porque esta página no forma parte  de un paquete SCORM.","msgYouLastScore":"La última puntuación guardada es","msgActityComply":"Ya ha realizado esta actividad.","msgPlaySeveralTimes":"Puede realizar esta actividad cuantas veces quiera","msgEndGameScore":"Antes de guardar la puntuación comience la partida.","msgSeveralScore":"Puede guardar la puntuación tantas veces como quiera","msgOnlySaveScore":"¡Sólo puede guardar la puntuación una vez!","msgOnlySave":"Sólo puede guardar una vez","msgUncompletedActivity":"Actividad no completada","msgSuccessfulActivity":"Actividad superada. Puntuación: %s","msgUnsuccessfulActivity":"Actividad no superada. Puntuación: %s","msgTypeGame":"Vídeo interactivo"},"scorm":{"isScorm":0,"textButtonScorm":"Guardar la puntuación","repeatActivity":false},"scoreNIA":false,"evaluation":false,"evaluationID":"","ideviceID":"202651291911-120"}				//]]></script>			</div>
+var InteractiveVideo = {"slides":[{"type":"multipleChoice","question":"<p><em><strong>Cal é a causa da solicitude de protección internacional de Salomé?</strong></em> Lembra a orde de resposta para o código</p>","answers":[["1. Ameazas por loitar polos dereitos das persoas",0],["2. Ameazas de bandas criminais e sen protección das autoridades",1],["3. Ameazas polas  súas ideas políticas",0],["4. Vítima de explotación sexual",0]],"startTime":153},{"type":"multipleChoice","question":"<p><strong>Sinala todas as opcións onde Salomé podería pedir asilo.</strong> Lembra o número de respostas para o código</p>","answers":[["1. Posto Fronteirizo",1],["2. Hospital",0],["3. Oficina de Extranjería",1],["4. Oficinas da Xunta de Galicia",0],["5. Comisaría da Policía Nacional",1],["6. Cruz Vermella",0]],"startTime":256},{"type":"cloze","text":"<p>Salomé unha vez feita a solicitude de asilo obterá resposta nun prazo máximo de <span style=\"text-decoration: line-through;\">seis</span> meses, mentres tanto terá asistencia <span style=\"text-decoration: line-through;\">médica</span> e acceso ás prestacións <span style=\"text-decoration: line-through;\">sociais</span>, tamén terá recoñecido o derechoa a procura de <span style=\"text-decoration: line-through;\">emprego</span>.</p>","startTime":423}],"i18n":{"start":"Inicio","results":"Resultados","slide":"Diapositiva (fotograma)","score":"Puntuación","seen":"Visto","total":"Total","seeAll":"debe ver todo el contenido y contestar a las preguntas","noSlides":"El vídeo no tiene contenidos interactivos.","goOn":"Continuar","error":"Error","dataError":"Código no compatible","onlyOne":"Sólo un vídeo interactivo por página.","cover":"Portada","fsWarning":"Salga del modo pantalla completa (tecla Esc) para ver la diapositiva","right":"¡Correcto!","wrong":"Incorrecto","sortableListInstructions":"Pinche y arrastre o use las flechas.","up":"Subir","down":"Bajar","rightAnswer":"Respuesta correcta:","notAnswered":"Por favor termine la actividad","check":"Comprobar","newWindow":"Ventana nueva","msgOnlySaveAuto":"Su puntuación se guardará después de cada pregunta. Sólo puede jugar una vez.","msgSaveAuto":"Su puntuación se guardará automáticamente después de cada pregunta.","msgYouScore":"Su puntuación","msgScoreScorm":"La puntuación no se puede guardar porque esta página no forma parte  de un paquete SCORM.","msgYouLastScore":"La última puntuación guardada es","msgActityComply":"Ya ha realizado esta actividad.","msgPlaySeveralTimes":"Puede realizar esta actividad cuantas veces quiera","msgEndGameScore":"Antes de guardar la puntuación comience la partida.","msgSeveralScore":"Puede guardar la puntuación tantas veces como quiera","msgOnlySaveScore":"¡Sólo puede guardar la puntuación una vez!","msgOnlySave":"Sólo puede guardar una vez","msgUncompletedActivity":"Actividad no completada","msgSuccessfulActivity":"Actividad superada. Puntuación: %s","msgUnsuccessfulActivity":"Actividad no superada. Puntuación: %s","msgTypeGame":"Vídeo interactivo"},"scorm":{"isScorm":0,"textButtonScorm":"Guardar la puntuación","repeatActivity":false},"scoreNIA":false,"evaluation":false,"evaluationID":"","ideviceID":"202651291911-120"}				//]]></script>			</div>
 </div>
 </div>
 </div>

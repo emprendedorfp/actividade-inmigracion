@@ -15,6 +15,8 @@
 <script type="text/javascript" src="common.js"></script>
 <link rel="stylesheet" type="text/css" href="scrambled-list.css" />
 <script type="text/javascript" src="scrambled-list.js"></script>
+<link rel="stylesheet" type="text/css" href="candado-activity.css" />
+<script type="text/javascript" src="candado-activity.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
 /* 1. AJUSTE DEL LOGO (FONDO) */
@@ -35,7 +37,22 @@
     text-align: left !important;
     line-height: 1.1 !important;
 }
-</style></head>
+</style>
+<style>
+/* Oculta los colores e indicaciones en el Rellenar Huecos */
+.cloze-activity .correct, 
+.cloze-activity .incorrect {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border: 1px solid #cccccc !important;
+}
+.cloze-activity .score, 
+.cloze-activity .feedback,
+.cloze-activity .toggle-feedback {
+    display: none !important;
+}
+</style>
+</head>
 <body class="exe-web-site" id="exe-node-6"><script type="text/javascript">document.body.className+=" js"</script>
 <div id="content">
 <p id="skipNav"><a href="#main" class="sr-av">Saltar navegación</a></p>
@@ -97,9 +114,9 @@ function comprobarPassword3() {
 <div id="ta57_132_2" class="block iDevice_content">
 <div class="exe-text"><div style="display: flex; justify-content: center; align-items: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 25px 0;">
 <div style="background-color: #ffffff; border: 3px solid #004A7F; border-radius: 10px; padding: 20px 35px; box-shadow: 0 4px 12px rgba(0, 74, 127, 0.15); text-align: center; width: 290px;">
-<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tiempo Global del Desafío</div>
+<div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tempo Global do Scape room</div>
 <div id="crono_global" style="color: #004a7f; font-size: 3.2rem; font-weight: bold; background-color: #f4f7f9; padding: 12px; border-radius: 6px; border: 1px solid #d0dae2; font-family: monospace; letter-spacing: 1px;">02:00:00</div>
-<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comenzar Desafío</button></div>
+<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comezar o Scape Room</button></div>
 </div>
 <p>
 <script>
@@ -208,12 +225,29 @@ function comprobarPassword3() {
 </figure>
 <p style="text-align: justify;">Malika ten 19 anos e vive en Mequinez, no norte de Marrocos. Terminou o curso sétimo de secundaria obtendo o certificado de fin de estudos secundarios, con excelentes notas, o seu sono é estudar Arquitectura pero na súa casa hai dificultades económicas. A súa irmá traballa en Lugo é coméntalle que podería vir con ela e estudar un Ciclo Superior de Proxectos de Edificación como un primeiro paso. A súa irmá díxolle que, ao ser un Grao Superior, o primeiro paso non é o visado, senón demostrar que o seu título marroquí equivale ao Bacharelato español; ela considera que o problema é que non ten ningún permiso para desprazarse a España.</p>
 <p style="text-align: justify;">A súa irmá contacta co asociación Un Mundo Feliz, plantexándonos diversas dúbidas que terás que contestar, revisando os Recursos de Consulta e solucionando as actividades do reto que te proporcionen o código do reto.</p>
-<p style="text-align: justify;">Unha vez que resolvas todas as tarefas, na última de encher ocos, terás que escribir tamén en números, dita secuencia de números será o código para acceder ao Desafío Final</p>
 <ul></ul>
+<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 15px; border-radius: 5px; font-family: sans-serif;">
+<summary style="font-weight: bold; cursor: pointer; font-size: 1.1em; color: #2c3e50;">🔑 Pista para abrir o Desafío Final</summary>
+<div style="margin-top: 10px; line-height: 1.6; color: #333;">
+<p>Na tarefa de encher ocos hai unha serie de números que che darán a solución para acceder ao <strong>desafío final</strong>. O código do cadeado estará formado por unha secuencia numérica exacta seguindo esta orde:</p>
+<ul style="padding-left: 20px;">
+<li style="margin-bottom: 6px;"><strong>Artigo:</strong> Dous números.</li>
+<li style="margin-bottom: 6px;"><strong>Horas semanais:</strong> Dous números.</li>
+<li style="margin-bottom: 6px;"><strong>Meses:</strong> Dous números.</li>
+<li style="margin-bottom: 6px;"><strong>Anos:</strong> Un número.</li>
+<li style="margin-bottom: 6px;"><strong>Artigo:</strong> Tres números.</li>
+<li style="margin-bottom: 6px;"><strong>Anos:</strong> Un número.</li>
+</ul>
+<hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;" />
+<p style="background-color: #eef2f7; padding: 10px; border-left: 4px solid #3498db; margin: 0;">💡 <strong>Exemplo de modelo:</strong> O código final podería ser <strong>75252441901</strong>. <br /><span style="font-size: 0.95em; color: #555;">Isto significaría que os datos obtidos foron: artigo (<strong>75</strong>), horas semanais (<strong>25</strong>), meses (<strong>24</strong>), anos (<strong>4</strong>), artigo (<strong>190</strong>) e anos (<strong>1</strong>).</span></p>
+</div>
+</details>
 <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 13pt; background-color: #e3f2fd; border-left: 6px solid #2196f3; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
-<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA DE MALIKA:</p>
-<p style="margin-bottom: 15px;">Para axudar a Santiago, consulta aquí a guía oficial sobre o Arraigo para a Formación:</p>
-<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#ci-10" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Clica aquí para abrir a ligazón </a></div></div>
+<p style="margin-top: 0; font-weight: bold; color: #1565c0;">📌 RECURSO DE CONSULTA SOBRE MALIKA:</p>
+<p style="margin-bottom: 15px;">Para axudar a Malika, consulta no Regramento de Extranxeiría estos permisos:</p>
+<!-- BANNER DE PISTA LLAMATIVO -->
+<div style="background-color: #fff3e0; border: 2px dashed #ff9800; color: #e65100; padding: 12px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; font-size: 12pt; display: inline-block; max-width: 90%;">💡 PISTA IMPORTANTE: revisa só os artigos 52.1.a; 53.1.a; 54 e 55</div>
+<br /><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#a5-4" target="_blank" style="display: inline-block; background-color: #ffffff; color: #1565c0; border: 2px solid #1565c0; padding: 10px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s;" rel="noopener"> 👉 Pulsa aquí para abrir a ligazón </a></div></div>
 </div>
 </div>
 </article>
@@ -845,47 +879,25 @@ MDBhJXUwMDlhJXUwMDlk
 </div>
 </div>
 </article>
-<article class="iDevice_wrapper ClozeIdevice em_iDevice em_iDevice_question" id="id42">
+<article class="iDevice_wrapper candadoIdevice em_iDevice" id="id66">
 <div class="iDevice emphasis1" >
-<header class="iDevice_header"><h1 class="iDeviceTitle">Actividade de encher ocos</h1></header>
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Cadeado</h1></header>
 <div class="iDevice_inner">
 <div class="iDevice_content_wrapper">
-<section id="ta42_116" class="block instructions iDevice_content">
-<p>Malika plantexase as posibilidades que ten de traballar ou de obter ingresos, xa que ten que contribuir a economía da familia . Imos consultar unas normas  onde nos dan as posibilidades que ten Malika de traballar.</p>
+<div id="ta66_127_2" class="block iDevice_content">
+<div class="candado-IDevice"><div class="candado-version js-hidden">1</div><div class="candado-instructions"><p><span style="font-size: 1.1em;">Malika plantexase as posibilidades que ten de traballar ou de obter ingresos, xa que ten que contribuir a economía da familia . Imos consultar unas normas  onde nos dan as posibilidades que ten Malika de traballar.</span><span style="color: #000000;"></span></p>
 <ul>
 <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#a5-9" target="_blank" rel="noopener">Artigo 57 do Reglamento de Extranxería ( RD 1155/2024) no suposto de traballo mentres estuda</a>.</li>
 <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2013-10074&amp;p=20250409&amp;tn=1#da-2" target="_blank" rel="noopener">Disposición adicional décimo oitava da Ley 14/2013 de apoio aos emprendedores e a súa internacionalización, no suposto de prácticas posteriores aos estudos.</a></li>
 <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099&amp;p=20260415&amp;tn=1#a1-102" target="_blank" rel="noopener">Artigo 190 do Reglamento de Extranxería ( RD 1155/2024) no suposto de modificación da autorización de estudos á autorización de residencia e traballo</a>.</li>
 </ul>
-<p>Lea os parágrafos seguintes e escriba as palabras que faltan consultando os enlaces anteriores.</p>
-</section>
-
-    <section class="activity" id="activity-42_117"><form name="cloze-form-42_117" action="#" class="activity-form cloze-activity-form"><div id="cloze42_117"><input type="hidden" name="clozeFlag42_117.strictMarking" id="clozeFlag42_117.strictMarking" value="false"/>
-<input type="hidden" name="clozeFlag42_117.checkCaps" id="clozeFlag42_117.checkCaps" value="false"/>
-<input type="hidden" name="clozeFlag42_117.instantMarking" id="clozeFlag42_117.instantMarking" value="false"/>
-<input type="hidden" name="clozeVar42_117.feedbackId" id="clozeVar42_117.feedbackId" value="ta42_118"/>
-<p>Malika cursa o Ciclo Superior de Proxectos de Edificación, unha empresa consultora de construción, ofrécelle un contrato a tempo parcial. No artigo <label for="clozeBlank42_117.0" class="sr-av">Encher ocos (1):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.0" style="width:2ch" /><span style="display:none" id="clozeAnswer42_117.0">JXUwMDZkJXUwMDAy
-</span> do Reglamento de Extranxería regulase que tratándose dun estudo superior, a autorización de traballo incorpórase de xeito <label for="clozeBlank42_117.1" class="sr-av">Encher ocos (2):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.1" style="width:10ch" /><span style="display:none" id="clozeAnswer42_117.1">JXUwMDM5JXUwMDE0JXUwMDAxJXUwMDFiJXUwMDAyJXUwMDhjJXUwMDk1JXUwMDFkJXUwMDBhJXUw
-MDBj
-</span> na súa tarxeta de estudante, sempre e cando o horario de traballo sexa compatible e co límite máximo de <label for="clozeBlank42_117.2" class="sr-av">Encher ocos (3):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.2" style="width:2ch" /><span style="display:none" id="clozeAnswer42_117.2">JXUwMDZiJXUwMDAz
-</span> horas semanais.</p>
-<p>Malika terminou o seu Ciclo Superior en Galicia e foi seleccionada para unha bolsa de prácticas xestionada a través de <label for="clozeBlank42_117.3" class="sr-av">Encher ocos (4):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.3" style="width:5ch" /><span style="display:none" id="clozeAnswer42_117.3">JXUwMDFlJXUwMDAzJXUwMDEwJXUwMDEyJXUwMDA2
-</span>. Ao non tratarse dun contrato laboral tradicional, a relación formalizarase mediante un convenio de prácticas asinado entre a fundación, a empresa e ela. Ao revisar a Disposición Adicional 18ª da Lei 14/2013, vemos que para que Estranxeiría conceda a residencia por prácticas, as tarefas que realice Elena deben estar directamente <label for="clozeBlank42_117.4" class="sr-av">Encher ocos (5):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.4" style="width:12ch" /><span style="display:none" id="clozeAnswer42_117.4">JXUwMDJhJXUwMDE3JXUwMDA5JXUwMDBkJXUwMDAyJXUwMDBhJXUwMDA2JXUwMDAxJXUwMDBmJXUw
-MDA1JXUwMDA1JXUwMDEy
-</span> coa súa titulación de FP. Ademáis, este tipo de acordos amparados pola Lei de emprendedores teñen unha duración máxima inicial de <label for="clozeBlank42_117.5" class="sr-av">Encher ocos (6):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.5" style="width:1ch" /><span style="display:none" id="clozeAnswer42_117.5">JXUwMDY5
-</span> ano e terá dereito a percibir unha bolsa e ademáis estará en alta na Seguridade Social.</p>
-<p>Malika está a piques de finalizar a beca, e na empresa están contentos co seu desempeño e queren contratala a xornada completa. A representante da empresa coida que non pode porque leva só <label for="clozeBlank42_117.6" class="sr-av">Encher ocos (7):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.6" style="width:1ch" /><span style="display:none" id="clozeAnswer42_117.6">JXUwMDZh
-</span> años en España. Porén, ao consultar o artigo <label for="clozeBlank42_117.7" class="sr-av">Encher ocos (8):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.7" style="width:3ch" /><span style="display:none" id="clozeAnswer42_117.7">JXUwMDY5JXUwMDA4JXUwMDA5
-</span> do Reglamento, vemos que para os titulados de educación superior  eliminouse o requisito de ter que demostrar tres anos de permanencia previa. Malika poderá solicitar a modificación directa a residencia e traballo, si la empresa le ofrece un contrato que garantice que garantice polo menos los salarios do SMI e a súa duración será de <label for="clozeBlank42_117.8" class="sr-av">Encher ocos (9):</label><input class="autocomplete-off" type="text" value="" id="clozeBlank42_117.8" style="width:1ch" /><span style="display:none" id="clozeAnswer42_117.8">JXUwMDY5
-</span> ano.</p>
+<p>Lea os parágrafos seguintes e escriba as palabras que faltan consultando os enlaces anteriores, a secuencia de números será o código que abra o cadeado</p>
+<p><span style="color: #800000;">Malika xa ten o permiso de estancia por estudos superiores e  cursa o Ciclo Superior de Proxectos de Edificación. Unha empresa consultora de construción, ofrécelle un contrato a tempo parcial. No artigo ____do Reglamento de Extranxería regulase que tratándose dun estudo superior, a autorización de traballo incorpórase de xeito automático na súa tarxeta de estudante, sempre e cando o horario de traballo sexa compatible e co límite máximo de ___ horas semanais.</span></p>
+<p><span style="color: #800000;">Unha vez que finalizou o Ciclo Superior foi seleccionada para unha bolsa de prácticas xestionada a través de FEUGA. Ao non tratarse dun contrato laboral tradicional, a relación formalizarase mediante un convenio de prácticas asinado entre a fundación, a empresa e ela. Ao revisar a Disposición Adicional 18ª da Lei 14/2013, vemos que para que Estranxeiría conceda a residencia por prácticas, as tarefas que realice Elena deben estar directamente relacionadas coa súa titulación de FP. Ademáis, este tipo de acordos amparados pola Lei de emprendedores teñen unha duración máxima inicial de _____ meses e terá dereito a percibir unha bolsa e ademáis estará en alta na Seguridade Social.</span></p>
+<p><span style="color: #800000;">Malika está a piques de finalizar a beca, e na empresa están contentos co seu desempeño e queren contratala a xornada completa. A representante da empresa coida que non pode porque leva só ____ años en España. Porén, ao consultar o artigo ______ do Reglamento, vemos que para os titulados de educación superior  eliminouse o requisito de ter que demostrar tres anos de permanencia previa. Malika poderá solicitar a modificación directa a residencia e traballo, si la empresa le ofrece un contrato que garantice que garantice polo menos los salarios do SMI e a súa duración será de ____ ano.</span></p>
 <p></p>
-<p></p><div class="block iDevice_buttons"><p><input class="button" type="submit" name="submit42_117" value="Enviar"  id="submit42_117" />
-<input type="button" name="restart42_117" value="Reiniciar" style="display:none" id="restart42_117" onclick="$exe.cloze.restart('42_117')" />
- <input type="button" name="42_117showAnswersButton" value="Amosar respostas" style="display:none" id="showAnswersButton42_117" onclick="$exe.cloze.fillInputs('42_117')" />
-<span class="js-hidden js-warning">Activar JavaScript</span></p></div><div id="clozeScore42_117"></div></div></form></section>
-    <section id="ta42_118" class="feedback js-feedback iDevice_content" style="display:none">
-<p>Escribe de corrido todos os números que encheron os ocos, e terás o código de este reto, para acceder ao desafio final</p>
-</section>
+<p></p></div><div class="candado-retro"><p>xxx</p></div><div class="candado-DataGame js-hidden" >%E9%B0%F1%F3%FC%F6%F3%F6%FD%C6%FB%FF%F7%B0%A8%A4%A2%BE%B0%F1%F3%FC%F6%F3%F6%FD%C1%FD%FE%E7%E6%FB%FD%FC%B0%A8%B0%A7%A5%A1%A2%A3%A0%A0%A3%AB%A2%A3%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%DB%FC%E1%E6%E0%E7%F1%E6%FB%FD%FC%E1%B0%A8%B0%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%C0%F7%E6%E0%FD%B0%A8%B0%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%C1%FA%FD%E5%DF%FB%FC%FB%FF%FB%E8%F7%B0%A8%F4%F3%FE%E1%F7%BE%B0%F1%F3%FC%F6%F3%F6%FD%C0%F7%F0%FD%FD%E6%B0%A8%E6%E0%E7%F7%BE%B0%F1%F3%FC%F6%F3%F6%FD%D3%E6%E6%F7%FF%E2%E1%B0%A8%B0%A3%B0%BE%B0%F1%F3%FC%F6%F3%F6%FD%D7%E0%E0%FD%E0%DF%F7%E1%E1%F3%F5%F7%B0%A8%B0%C4%FD%FE%E4%F7%B2%F3%B2%FB%FC%E6%F7%FC%E6%F3%FE%FD%B0%BE%B0%FF%E1%F5%E1%B0%A8%E9%B0%FF%E1%F5%DD%F9%B0%A8%B0%D3%F1%F7%E2%E6%F3%E0%B0%BE%B0%FF%E1%F5%DF%FB%FC%FB%FF%FB%E8%F7%B0%A8%B0%DF%FB%FC%FB%FF%FB%E8%F3%E0%B0%BE%B0%FF%E1%F5%DF%F3%EA%FB%FF%FB%E8%F7%B0%A8%B0%DF%F3%EA%FB%FF%FB%E8%F3%E0%B0%BE%B0%FF%E1%F5%C6%FB%FF%F7%B0%A8%B0%DE%7F%FF%FB%E6%F7%B2%F6%F7%B2%E6%FB%F7%FF%E2%FD%B2%BA%FF%FF%A8%E1%E1%BB%B0%BE%B0%FF%E1%F5%DB%FC%E1%E6%E0%E7%F1%E6%FB%FD%FC%E1%B0%A8%B0%DB%FC%E1%E6%E0%E7%F1%F1%FB%FD%FC%F7%E1%B0%BE%B0%FF%E1%F5%D4%F7%F7%F6%F0%F3%F1%F9%B0%A8%B0%C0%F7%E6%E0%FD%F3%FE%FB%FF%F7%FC%E6%F3%F1%FBa%FC%B0%BE%B0%FF%E1%F5%D1%FD%F6%F7%D3%F1%F1%F7%E1%E1%B0%A8%B0%D1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%D7%FC%E6%F7%E0%D1%FD%F6%F7%B0%A8%B0%DB%FC%E6%E0%FD%F6%E7%E8%F1%F3%B2%F7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%D7%E0%E0%FD%E0%D1%FD%F6%F7%B0%A8%B0%D7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B2%FC%FD%B2%F7%E1%B2%F1%FD%E0%E0%F7%F1%E6%FD%B0%BE%B0%FF%E1%F5%C0%F7%E3%E7%FB%E0%F7%F6%D3%F1%F1%F7%E1%E1%D9%F7%EB%B0%A8%B0%D7%E1%B2%FC%F7%F1%F7%E1%F3%E0%FB%FD%B2%F7%FE%B2%F1a%F6%FB%F5%FD%B2%F6%F7%B2%F3%F1%F1%F7%E1%FD%B0%BE%B0%FF%E1%F5%C1%E7%F1%F1%F7%E1%E1%F7%E1%B0%A8%B03%D1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%D7%EA%F1%F7%FE%F7%FC%E6%F7%B3%B2%EE%B23%D5%F7%FC%FB%F3%FE%B3%B2%EE%B23%DF%E7%EB%B2%F0%FB%F7%FC%B3%B2%EE%B23%C2%F7%E0%F4%F7%F1%E6%FD%B3%B0%BE%B0%FF%E1%F5%D4%F3%FB%FE%E7%E0%F7%E1%B0%A8%B03%DC%FD%B2%F7%E0%F3%B2%F7%E1%FD%B3%B2%EE%B23%DB%FC%F1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%DC%FD%B2%F7%E1%B2%F1%FD%E0%E0%F7%F1%E6%FD%B3%B2%EE%B23%DE%FD%B2%E1%F7%FC%E6%FB%FF%FD%E1%B3%B2%EE%B23%D7%E0%E0%FD%E0%B3%B0%BE%B0%FF%E1%F5%D7%C1%FA%FD%E5%D3%F1%E6%FB%E4%FB%E6%EB%B0%A8%B0%DF%FD%E1%E6%E0%F3%E0%B2%FE%F3%B2%F3%F1%E6%FB%E4%FB%F6%F3%F6%B0%BE%B0%FF%E1%F5%C1%E7%F0%FF%FB%E6%B0%A8%B0%D1%FD%FF%E2%E0%FD%F0%F3%E0%B0%EF%EF</div><div class="candado-bns js-hidden">Su navegador no es compatible con esta herramienta.</div></div>
+</div>
 </div>
 </div>
 </div>
