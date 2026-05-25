@@ -116,21 +116,14 @@ function comprobarPassword3() {
 <div style="background-color: #ffffff; border: 3px solid #004A7F; border-radius: 10px; padding: 20px 35px; box-shadow: 0 4px 12px rgba(0, 74, 127, 0.15); text-align: center; width: 290px;">
 <div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tempo Global do Scape room</div>
 <div id="crono_global" style="color: #004a7f; font-size: 3.2rem; font-weight: bold; background-color: #f4f7f9; padding: 12px; border-radius: 6px; border: 1px solid #d0dae2; font-family: monospace; letter-spacing: 1px;">02:00:00</div>
-<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comezar o Scape Room</button></div>
+</div>
 </div>
 <p>
 <script>
 (function() {
-  const TIEMPO_INICIAL_SEGUNDOS = 120 * 60; // 120 minutos
-  let intervalo = null;
-
+  const TIEMPO_INICIAL_SEGUNDOS = 120 * 60;
   const display = document.getElementById('crono_global');
-  const boton = document.getElementById('btn_global');
-
-  // Control de alertas individuales por sesión/página
-  let alerta90 = false;
-  let alerta60 = false;
-  let alerta30 = false;
+  let intervalo = null;
 
   function formatearTiempo(segundos) {
     const hrs = Math.floor(segundos / 3600);
@@ -139,15 +132,17 @@ function comprobarPassword3() {
     return (hrs < 10 ? '0' : '') + hrs + ':' + (mins < 10 ? '0' : '') + mins + ':' + (segs < 10 ? '0' : '') + segs;
   }
 
-  function comprobarYActualizar() {
+  function actualizarSoloReloj() {
     const finTiempo = localStorage.getItem('desafio_fin_tiempo');
+    const tiempoPausado = localStorage.getItem('desafio_pausado_tiempo');
+    
+    if (tiempoPausado) {
+      display.textContent = formatearTiempo(parseInt(tiempoPausado));
+      return;
+    }
     
     if (!finTiempo) {
-      // No ha empezado el juego
       display.textContent = formatearTiempo(TIEMPO_INICIAL_SEGUNDOS);
-      boton.textContent = "Comenzar Desafío";
-      boton.disabled = false;
-      boton.style.backgroundColor = "#0098DA";
       return;
     }
 
@@ -155,61 +150,22 @@ function comprobarPassword3() {
     const tiempoRestante = finTiempo - ahora;
 
     if (tiempoRestante <= 0) {
-      // El tiempo se ha terminado
       clearInterval(intervalo);
-      localStorage.removeItem('desafio_fin_tiempo');
       display.textContent = "00:00:00";
       display.style.color = "#cc3333";
       display.style.backgroundColor = "#fff3f3";
       display.style.borderColor = "#cc3333";
-      
-      boton.textContent = "Reiniciar Desafío";
-      boton.disabled = false;
-      boton.style.backgroundColor = "#0098DA";
-      
-      alert("¡El tiempo global ha terminado! El desafío ha expirado.");
     } else {
-      // El tiempo sigue corriendo
       display.textContent = formatearTiempo(tiempoRestante);
-      boton.textContent = "Desafío en marcha...";
-      boton.disabled = true;
-      boton.style.backgroundColor = "#a0b2c6";
-
-      // Comprobación de alertas según los minutos que quedan
-      const minsRestantes = tiempoRestante / 60;
-      if (minsRestantes <= 90 && !alerta90) { alerta90 = true; alert("¡Atención! Quedan 90 minutos globales."); }
-      if (minsRestantes <= 60 && !alerta60) { alerta60 = true; alert("¡Atención! Quedan 60 minutos (1 hora)."); }
-      if (minsRestantes <= 30 && !alerta30) { alerta30 = true; alert("¡Atención! Últimos 30 minutos del desafío."); }
+      display.style.color = "#004A7F";
+      display.style.backgroundColor = "#f4f7f9";
+      display.style.borderColor = "#d0dae2";
     }
   }
 
-  // Iniciar el contador de la página actual si ya hay un tiempo guardado en el navegador
-  if (localStorage.getItem('desafio_fin_tiempo')) {
-    display.style.color = "#004A7F";
-    comprobarYActualizar();
-    intervalo = setInterval(comprobarYActualizar, 1000);
-  }
-
-  // Evento al pulsar el botón (solo activo si no está corriendo)
-  boton.addEventListener('click', function() {
-    const ahora = Math.floor(Date.now() / 1000);
-    const tiempoDestino = ahora + TIEMPO_INICIAL_SEGUNDOS;
-    
-    // Guardamos el momento exacto del fin en la memoria del navegador
-    localStorage.setItem('desafio_fin_tiempo', tiempoDestino);
-    
-    display.style.color = "#004A7F";
-    display.style.backgroundColor = "#f4f7f9";
-    display.style.borderColor = "#d0dae2";
-
-    comprobarYActualizar();
-    clearInterval(intervalo);
-    intervalo = setInterval(comprobarYActualizar, 1000);
-  });
-
-  // Efectos visuales del botón
-  boton.addEventListener('mouseover', () => { if(!localStorage.getItem('desafio_fin_tiempo')) boton.style.backgroundColor = '#007BB2'; });
-  boton.addEventListener('mouseout', () => { if(!localStorage.getItem('desafio_fin_tiempo')) boton.style.backgroundColor = '#0098DA'; });
+  // Ejecutar al cargar la página y actualizar cada segundo
+  actualizarSoloReloj();
+  intervalo = setInterval(actualizarSoloReloj, 1000);
 })();
 </script>
 </p></div>

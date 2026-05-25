@@ -77,7 +77,9 @@
 <div style="background-color: #ffffff; border: 3px solid #004A7F; border-radius: 10px; padding: 20px 35px; box-shadow: 0 4px 12px rgba(0, 74, 127, 0.15); text-align: center; width: 290px;">
 <div style="color: #004a7f; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold;">Tempo Global do Scape room</div>
 <div id="crono_global" style="color: #004a7f; font-size: 3.2rem; font-weight: bold; background-color: #f4f7f9; padding: 12px; border-radius: 6px; border: 1px solid #d0dae2; font-family: monospace; letter-spacing: 1px;">02:00:00</div>
-<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comezar Scape room</button></div>
+<button id="btn_global" style="margin-top: 15px; padding: 10px 20px; font-size: 1rem; cursor: pointer; background-color: #0098da; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; width: 100%; transition: background-color 0.2s ease;">Comezar Scape room</button>
+<div style="display: flex; gap: 10px; margin-top: 10px;"><button id="btn_pausa" style="flex: 1; padding: 8px; font-size: 0.85rem; cursor: pointer; background-color: #e67e22; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; display: none;">Pausar</button> <button id="btn_reiniciar" style="flex: 1; padding: 8px; font-size: 0.85rem; cursor: pointer; background-color: #cc3333; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; text-transform: uppercase;">Reiniciar</button></div>
+</div>
 </div>
 <p>
 <script>
@@ -87,11 +89,8 @@
 
   const display = document.getElementById('crono_global');
   const boton = document.getElementById('btn_global');
-
-  // Control de alertas individuales por sesión/página
-  let alerta90 = false;
-  let alerta60 = false;
-  let alerta30 = false;
+  const btnPausa = document.getElementById('btn_pausa');
+  const btnReiniciar = document.getElementById('btn_reiniciar');
 
   function formatearTiempo(segundos) {
     const hrs = Math.floor(segundos / 3600);
@@ -102,13 +101,25 @@
 
   function comprobarYActualizar() {
     const finTiempo = localStorage.getItem('desafio_fin_tiempo');
+    const tiempoPausado = localStorage.getItem('desafio_pausado_tiempo');
+    
+    if (tiempoPausado) {
+      display.textContent = formatearTiempo(parseInt(tiempoPausado));
+      boton.textContent = "Desafío Pausado";
+      boton.disabled = true;
+      boton.style.backgroundColor = "#a0b2c6";
+      btnPausa.textContent = "Reanudar";
+      btnPausa.style.backgroundColor = "#27ae60";
+      btnPausa.style.display = "block";
+      return;
+    }
     
     if (!finTiempo) {
-      // No ha empezado el juego
       display.textContent = formatearTiempo(TIEMPO_INICIAL_SEGUNDOS);
-      boton.textContent = "Comenzar Desafío";
+      boton.textContent = "Comezar Scape room";
       boton.disabled = false;
       boton.style.backgroundColor = "#0098DA";
+      btnPausa.style.display = "none";
       return;
     }
 
@@ -116,9 +127,13 @@
     const tiempoRestante = finTiempo - ahora;
 
     if (tiempoRestante <= 0) {
-      // El tiempo se ha terminado
       clearInterval(intervalo);
       localStorage.removeItem('desafio_fin_tiempo');
+      localStorage.removeItem('desafio_pausado_tiempo');
+      localStorage.removeItem('alerta_90_hecha');
+      localStorage.removeItem('alerta_60_hecha');
+      localStorage.removeItem('alerta_30_hecha');
+      
       display.textContent = "00:00:00";
       display.style.color = "#cc3333";
       display.style.backgroundColor = "#fff3f3";
@@ -127,37 +142,53 @@
       boton.textContent = "Reiniciar Desafío";
       boton.disabled = false;
       boton.style.backgroundColor = "#0098DA";
+      btnPausa.style.display = "none";
       
       alert("¡El tiempo global ha terminado! El desafío ha expirado.");
     } else {
-      // El tiempo sigue corriendo
       display.textContent = formatearTiempo(tiempoRestante);
       boton.textContent = "Desafío en marcha...";
       boton.disabled = true;
       boton.style.backgroundColor = "#a0b2c6";
+      btnPausa.style.display = "block";
+      btnPausa.textContent = "Pausar";
+      btnPausa.style.backgroundColor = "#e67e22";
 
-      // Comprobación de alertas según los minutos que quedan
+      // COMPROBACIÓN DE ALERTAS CON MEMORIA INMUNE AL CAMBIO DE PÁGINA
       const minsRestantes = tiempoRestante / 60;
-      if (minsRestantes <= 90 && !alerta90) { alerta90 = true; alert("¡Atención! Quedan 90 minutos globales."); }
-      if (minsRestantes <= 60 && !alerta60) { alerta60 = true; alert("¡Atención! Quedan 60 minutos (1 hora)."); }
-      if (minsRestantes <= 30 && !alerta30) { alerta30 = true; alert("¡Atención! Últimos 30 minutos del desafío."); }
+      
+      if (minsRestantes <= 90 && !localStorage.getItem('alerta_90_hecha')) { 
+        localStorage.setItem('alerta_90_hecha', 'true'); 
+        alert("¡Atención! Quedan 90 minutos globales."); 
+      }
+      if (minsRestantes <= 60 && !localStorage.getItem('alerta_60_hecha')) { 
+        localStorage.setItem('alerta_60_hecha', 'true'); 
+        alert("¡Atención! Quedan 60 minutos (1 hora)."); 
+      }
+      if (minsRestantes <= 30 && !localStorage.getItem('alerta_30_hecha')) { 
+        localStorage.setItem('alerta_30_hecha', 'true'); 
+        alert("¡Atención! Últimos 30 minutos del desafío."); 
+      }
     }
   }
 
-  // Iniciar el contador de la página actual si ya hay un tiempo guardado en el navegador
-  if (localStorage.getItem('desafio_fin_tiempo')) {
+  if (localStorage.getItem('desafio_fin_tiempo') || localStorage.getItem('desafio_pausado_tiempo')) {
     display.style.color = "#004A7F";
     comprobarYActualizar();
-    intervalo = setInterval(comprobarYActualizar, 1000);
+    if (!localStorage.getItem('desafio_pausado_tiempo')) {
+      intervalo = setInterval(comprobarYActualizar, 1000);
+    }
   }
 
-  // Evento al pulsar el botón (solo activo si no está corriendo)
   boton.addEventListener('click', function() {
     const ahora = Math.floor(Date.now() / 1000);
     const tiempoDestino = ahora + TIEMPO_INICIAL_SEGUNDOS;
     
-    // Guardamos el momento exacto del fin en la memoria del navegador
     localStorage.setItem('desafio_fin_tiempo', tiempoDestino);
+    localStorage.removeItem('desafio_pausado_tiempo');
+    localStorage.removeItem('alerta_90_hecha');
+    localStorage.removeItem('alerta_60_hecha');
+    localStorage.removeItem('alerta_30_hecha');
     
     display.style.color = "#004A7F";
     display.style.backgroundColor = "#f4f7f9";
@@ -168,9 +199,49 @@
     intervalo = setInterval(comprobarYActualizar, 1000);
   });
 
-  // Efectos visuales del botón
-  boton.addEventListener('mouseover', () => { if(!localStorage.getItem('desafio_fin_tiempo')) boton.style.backgroundColor = '#007BB2'; });
-  boton.addEventListener('mouseout', () => { if(!localStorage.getItem('desafio_fin_tiempo')) boton.style.backgroundColor = '#0098DA'; });
+  btnPausa.addEventListener('click', function() {
+    const tiempoPausado = localStorage.getItem('desafio_pausado_tiempo');
+    
+    if (!tiempoPausado) {
+      clearInterval(intervalo);
+      const finTiempo = localStorage.getItem('desafio_fin_tiempo');
+      const ahora = Math.floor(Date.now() / 1000);
+      const restante = Math.max(0, finTiempo - now);
+      
+      localStorage.setItem('desafio_pausado_tiempo', restante);
+      comprobarYActualizar();
+    } else {
+      const ahora = Math.floor(Date.now() / 1000);
+      const nuevoFinTiempo = ahora + parseInt(tiempoPausado);
+      
+      localStorage.setItem('desafio_fin_tiempo', nuevoFinTiempo);
+      localStorage.removeItem('desafio_pausado_tiempo');
+      
+      comprobarYActualizar();
+      clearInterval(intervalo);
+      intervalo = setInterval(comprobarYActualizar, 1000);
+    }
+  });
+
+  btnReiniciar.addEventListener('click', function() {
+    if (confirm("¿Seguro que quieres reiniciar el tiempo del Scape Room a 02:00:00?")) {
+      clearInterval(intervalo);
+      localStorage.removeItem('desafio_fin_tiempo');
+      localStorage.removeItem('desafio_pausado_tiempo');
+      localStorage.removeItem('alerta_90_hecha');
+      localStorage.removeItem('alerta_60_hecha');
+      localStorage.removeItem('alerta_30_hecha');
+      
+      display.style.color = "#004A7F";
+      display.style.backgroundColor = "#f4f7f9";
+      display.style.borderColor = "#d0dae2";
+      
+      comprobarYActualizar();
+    }
+  });
+
+  boton.addEventListener('mouseover', () => { if(!localStorage.getItem('desafio_fin_tiempo') && !localStorage.getItem('desafio_pausado_tiempo')) boton.style.backgroundColor = '#007BB2'; });
+  boton.addEventListener('mouseout', () => { if(!localStorage.getItem('desafio_fin_tiempo') && !localStorage.getItem('desafio_pausado_tiempo')) boton.style.backgroundColor = '#0098DA'; });
 })();
 </script>
 </p></div>
